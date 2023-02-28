@@ -1,1 +1,1 @@
-% Practicing Express with Platzi
+# Practicing Express with Platzi
