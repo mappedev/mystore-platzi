@@ -5,8 +5,8 @@ const cors = require('cors')
 const routerAPI = require('./app')
 const { errorHandler, logErrors } = require('./app/commons/middlewares')
 
-// const HOST = 'localhost'
-const HOST = '192.168.1.107'
+const HOST = 'localhost'
+// const HOST = '192.168.1.107'
 const PORT = 8080
 
 const WHITELIST = [
