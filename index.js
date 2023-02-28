@@ -12,7 +12,7 @@ const PORT = 8080
 const WHITELIST = [
   'http://localhost:8080',
   'http://192.168.1.107:8080',
-  'https://myapp.ve',
+  'https://mystore-platzi.onrender.com',
 ]
 var corsOptions = {
   origin: {
