@@ -5,8 +5,6 @@ const cors = require('cors')
 const routerAPI = require('./app')
 const { errorHandler, logErrors } = require('./app/commons/middlewares')
 
-const HOST = 'localhost'
-// const HOST = '192.168.1.107'
 const PORT = 8080
 
 const WHITELIST = [
@@ -38,7 +36,7 @@ routerAPI(app)
 app.use(logErrors)
 app.use(errorHandler)
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server is running on http://${HOST}:${PORT}`)
+  console.log(`Server is running on port ${PORT}`)
 })
