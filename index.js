@@ -9,18 +9,24 @@ const { errorHandler, logErrors } = require('./app/commons/middlewares')
 const HOST = '192.168.1.107'
 const PORT = 8080
 
-const WHITELIST = ['http://localhost:8080', 'https://myapp.ve']
-const options = {
-  origin: (origin, callback) => {
-    WHITELIST.includes(origin)
-      ? callback(null, true)
-      : callback(new Error("Not allowed"))
-  }
+const WHITELIST = [
+  'http://localhost:8080',
+  'http://192.168.1.107:8080',
+  'https://myapp.ve',
+]
+var corsOptions = {
+  origin: {
+    origin: (origin, cb) => {
+      WHITELIST.includes(origin)
+        ? cb(null, true)
+        : cb(new Error("Not allowed by CORS"))
+    }
+  },
 }
 
 // General middlewares
 app.use(express.json())
-app.use(cors(options))
+app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
   return res.send("Hola Server Express")
@@ -34,5 +40,5 @@ app.use(errorHandler)
 
 app.listen(PORT, HOST, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server is running on http://${HOST}:${PORT}/`)
+  console.log(`Server is running on http://${HOST}:${PORT}`)
 })
