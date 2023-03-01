@@ -5,4 +5,9 @@ function createErr(msg, errorCode, statusCode = 500) {
   return err
 }
 
+// const errors = {
+//   notFound: msg => createErr(msg, "NOT_FOUND", 404),
+//   conflict: msg => createErr(msg, "CONFLICT", 409),
+// }
+
 module.exports = { createErr }

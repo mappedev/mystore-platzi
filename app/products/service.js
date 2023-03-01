@@ -66,6 +66,7 @@ const update = async (id, name = null, price = null, image = null) => {
     throw createErr("Product not found", "not found", 404)
   }
 
+
   if (name) product.name = name
   if (price) product.price = price
   if (image) product.image = image

@@ -12,7 +12,7 @@ const PORT = 8080
 const WHITELIST = [
   'https://mappedev-mystore-platzi.onrender.com',
 ]
-var corsOptions = {
+const corsOptions = {
   origin: ENV_DEV
     ? '*'
     : (origin, cb) => {
