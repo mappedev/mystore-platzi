@@ -5,21 +5,15 @@ const cors = require('cors')
 const routerAPI = require('./app')
 const { errorHandler, logErrors } = require('./app/commons/middlewares')
 
-const ENV_DEV = process.env.NODE_ENV !== 'production'
+const PORT = process.env.PORT || 8080
 
-const PORT = 8080
-
-const WHITELIST = [
-  'https://mappedev-mystore-platzi.onrender.com',
-]
+const WHITELIST = ['http://localhost:8080']
 const corsOptions = {
-  origin: ENV_DEV
-    ? '*'
-    : (origin, cb) => {
-      WHITELIST.includes(origin)
-        ? cb(null, true)
-        : cb(new Error("Not allowed by CORS"))
-    }
+  origin: (origin, cb) => {
+    WHITELIST.includes(origin) || !origin
+      ? cb(null, true)
+      : cb(new Error("Not allowed by CORS"))
+  }
 }
 
 // General middlewares
