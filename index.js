@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 8080
 const WHITELIST = ['http://localhost:8080']
 const corsOptions = {
   origin: (origin, cb) => {
-    console.log('ORIGIN:', origin)
     WHITELIST.includes(origin) || !origin
+    !origin
       ? cb(null, true)
       : cb(new Error("Not allowed by CORS"))
   }
