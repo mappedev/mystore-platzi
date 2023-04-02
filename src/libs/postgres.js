@@ -1,41 +1,46 @@
-/* eslint-disable no-console */
-const { config } = require('../config')
-// Client option
-// const { Client } = require('pg')
-// const { Client } = require('pg')
+// /* eslint-disable no-console */
+// const { config } = require('../config')
+// // Client option
+// // const { Client } = require('pg')
+// // const { Client } = require('pg')
 
-// async function getConnection() {
-//   const client = new Client({
-//     host: 'localhost',
-//     port: 5432,
-//     user: 'mappedev',
-//     password: '29mappedb03',
-//     database: 'mystore_db',
-//   })
-//   await client.connect()
-//   return client
+// // async function getConnection() {
+// //   const client = new Client({
+// //     host: 'localhost',
+// //     port: 5432,
+// //     user: 'mappedev',
+// //     password: '29mappedb03',
+// //     database: 'mystore_db',
+// //   })
+// //   await client.connect()
+// //   return client
+// // }
+
+// // module.exports = getConnection
+
+// let URI = ''
+// if (config.isProd) {
+//   URI = config.db.url
+// } else {
+//   const { host, name, password, port, user } = config.db
+//   const USER = encodeURIComponent(user)
+//   const PASSWORD = encodeURIComponent(password)
+//   URI = `postgres://${USER}:${PASSWORD}@${host}:${port}/${name}`
 // }
 
-// module.exports = getConnection
+// // Pool option
+// const { Pool } = require('pg')
 
-const { host, name, password, port, user } = config.db
-const USER = encodeURIComponent(user)
-const PASSWORD = encodeURIComponent(password)
-const URI = `postgres://${USER}:${PASSWORD}@${host}:${port}/${name}`
+// const pool = new Pool({ connectionString: URI })
 
-// Pool option
-const { Pool } = require('pg')
+// // promise - checkout a client
+// pool.connect().then((client) => {
+//   return client
+//     .query('SELECT * FROM tasks')
+//     .catch((err) => {
+//       client.release()
+//       console.log(err.stack)
+//     })
+// })
 
-const pool = new Pool({ connectionString: URI })
-
-// promise - checkout a client
-pool.connect().then((client) => {
-  return client
-    .query('SELECT * FROM tasks')
-    .catch((err) => {
-      client.release()
-      console.log(err.stack)
-    })
-})
-
-module.exports = pool
+// module.exports = pool
