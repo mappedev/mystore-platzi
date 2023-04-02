@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
-const routerAPI = require('./app')
-const { errorHandler, logErrors } = require('./app/commons/middlewares')
+const routerAPI = require('./src/routes')
+const { errorHandler, logErrors, ormErrorHandler } = require('./src/middlewares')
+const { config } = require('./src/config')
 
-const PORT = process.env.PORT || 8080
+const PORT = config.port
 
 const WHITELIST = ['http://localhost:8080']
 const corsOptions = {
@@ -29,6 +30,7 @@ routerAPI(app)
 
 // Local Middlewares
 app.use(logErrors)
+app.use(ormErrorHandler)
 app.use(errorHandler)
 
 app.listen(PORT, () => {
