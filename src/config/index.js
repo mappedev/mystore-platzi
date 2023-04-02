@@ -11,7 +11,7 @@ const config = {
     // name: process.env.DB_NAME,
     // port: process.env.DB_POSTGRESQL_PORT,
     // port: process.env.DB_MYSQL_PORT,
-    url: process.env.DB_URL,
+    url: process.env.DATABASE_URL,
   }
 }
 
