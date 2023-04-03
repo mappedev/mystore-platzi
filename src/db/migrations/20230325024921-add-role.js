@@ -2,12 +2,13 @@
 
 const { DataTypes } = require('sequelize')
 
-const { TABLE_NAME } = require('../models/users')
+const { USER_TABLE_NAME } = require('../models/users')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.addColumn(TABLE_NAME, 'role', {
+
+    await queryInterface.addColumn(USER_TABLE_NAME, 'role', {
       allowNull: false,
       type: DataTypes.STRING,
       defaultValue: 'customer',
@@ -15,6 +16,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.removeColumn(TABLE_NAME, 'role')
+    await queryInterface.removeColumn(USER_TABLE_NAME, 'role')
   }
 };
