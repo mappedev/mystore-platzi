@@ -13,7 +13,15 @@ async function addItem(data) {
 }
 
 async function find() {
-  const orders = await models.order.findAll()
+  const orders = await models.order.findAll({
+    include: [
+      {
+        association: 'customer',
+        include: ['user']
+      },
+      'items',
+    ]
+  })
   return orders
 }
 

@@ -28,7 +28,7 @@ const OrderSchema = {
     get() { // * Indicamos la manera de obtenerlo
       const { items } = this
 
-      if (items.length > 0) {
+      if (items && items.length > 0) {
         return items.reduce((total, item) => {
           return total + (item.price * item.orderProduct.amount)
         }, 0)
